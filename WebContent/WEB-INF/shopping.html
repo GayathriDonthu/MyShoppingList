@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="shoppingList">
+<head>
+<meta charset="ISO-8859-1">
+<title>My Shopping List</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<script src="../js/shopping.js" type="text/javascript"></script>
+</head>
+<body bgcolor="#E6E6FA">
+
+
+<div align="center" ng-controller="shoppingController" >
+
+	<h2 align="center">My Shopping List</h2><br><br>
+	<form ng-submit="addItem(itemname)">
+		Item name: <input type="text" required placeholder="Enter Item name" ng-model="itemname"/><br><br>
+		<input type="submit" value="Add"/>
+		<button ng-click = "itemname=''">Clear</button>
+	</form>	
+	<br>
+	<b>{{message}}</b>
+	<br><br>
+	
+	<div>
+	<h3>ItemList:</h3> 
+	<table>
+		<tr ng-repeat="items in itemList">
+			<td> {{$index+1}}) </td><td>{{items}}</td><td> <button ng-click="removeItem($index)" > X </button></td>
+		</tr>
+	</table>
+	</div><br><br><br>
+	<button ng-click = "display()">Done</button>
+	<div ng-show="flag">
+		No. of items - {{count}}
+	</div>
+	
+</div>
+
+</body>
+</html>
